@@ -120,7 +120,13 @@ def send_email_digest(papers: list[Paper], digest_date: date) -> None:
     req = urllib.request.Request(
         "https://api.resend.com/emails",
         data=json.dumps(payload).encode(),
-        headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+            # Resend sits behind Cloudflare, which rejects urllib's default
+            # "Python-urllib" User-Agent with HTTP 403 / error 1010.
+            "User-Agent": "paper-digest/1.0",
+        },
         method="POST",
     )
     try:

@@ -35,6 +35,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--to", dest="to_date", help="End date, YYYY-MM-DD.")
     parser.add_argument("--dry-run", action="store_true", help="No LLM, no email: placeholder ranking, output to data/preview/.")
     parser.add_argument("--preview", action="store_true", help="Real LLM ranking, but no email; output to data/preview/.")
+    parser.add_argument("--send-email", action="store_true", help="With --preview/--dry-run: also send the email, to test delivery.")
     parser.add_argument("--verbose", action="store_true", help="Print detailed fetch logs.")
     return parser.parse_args()
 
@@ -136,7 +137,8 @@ def main() -> None:
     candidates = filter_by_keywords(deduped, config.get("keywords", []))
     # Local test runs build a throwaway preview so they never touch the published site.
     site_dir = Path("data") / "preview" if local_only else SITE_DIR
-    published = seen_keys(site_dir)
+    # Previews are throwaway, so re-running one must not hide papers it already showed.
+    published = set() if local_only else seen_keys(site_dir)
     candidates = [p for p in candidates if paper_key(p.to_dict()) not in published]
     try:
         selected = rank_papers(candidates, config, dry_run=args.dry_run)
@@ -159,9 +161,13 @@ def main() -> None:
     if local_only:
         email_path = site_dir / "email.html"
         email_path.write_text(build_html(selected, output_date, "index.html"), encoding="utf-8")
-        print(f"[notify] 本地预览模式：未发送邮件，邮件样例保存在 {email_path}")
-    elif selected:
+        print(f"[notify] 本地预览模式：邮件样例保存在 {email_path}")
+        if not args.send_email:
+            print("[notify] 未发送邮件（预览模式默认不发；加 --send-email 可测试真实发送）。")
+    if selected and (args.send_email or not local_only):
         send_email_digest(selected, output_date)
+    elif not selected:
+        print("[notify] 本期没有入选论文，不发送邮件。")
 
 
 if __name__ == "__main__":
