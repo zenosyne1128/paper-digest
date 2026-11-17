@@ -1,0 +1,158 @@
+[
+ {
+  "title": "Multi-omics Mendelian randomization and cartilage transcriptomics prioritize genetic loci and candidate genes for osteoarthritis",
+  "authors": [
+   "Zhi-Meng Zhang",
+   "Qing-Yan Wang"
+  ],
+  "source": "Journal of Applied Genetics",
+  "date": "2026-11-17",
+  "link": "https://doi.org/10.1007/s13353-026-01134-y",
+  "abstract": "",
+  "doi": "10.1007/s13353-026-01134-y",
+  "arxiv_id": null,
+  "matched_keywords": [
+   "Mendelian randomization"
+  ],
+  "score": 8.5,
+  "score_reason": "Directly applies multi-omics Mendelian randomization combined with transcriptomic data to perform causal locus and gene prioritization for osteoarthritis.",
+  "chinese_explanation": "该研究结合多组学孟德尔随机化（Multi-omics MR）与软骨组织转录组学数据，对骨关节炎的致病遗传位点和候选因果基因进行了系统筛选与优先排序。这种融合MR因果推断与组织特异性转录组的整合分析框架，与多组学因果推断研究方向高度契合。",
+  "key": "10.1007/s13353-026-01134-y",
+  "issue": "2026-11-17"
+ },
+ {
+  "title": "Genetic Determinants of Disease Trajectory in Sarcoidosis",
+  "authors": [
+   "Jin, S.",
+   "Kullberg, S.",
+   "Darlington, P.",
+   "Iseda, T.",
+   "Chuquimia, O.",
+   "Vasila, V.",
+   "Kockum, I.",
+   "Smed-Sorensen, A.",
+   "Eklund, A.",
+   "Ellinghaus, D.",
+   "Prasse, A.",
+   "Schreiber, S.",
+   "Mueller-Quernheim, J.",
+   "Mathias, K.",
+   "Mirsaeidi, M.",
+   "Padyukov, L.",
+   "Spagnolo, P.",
+   "Sharp, M.",
+   "Rivera, N. V."
+  ],
+  "source": "medrxiv",
+  "date": "2026-11-14",
+  "link": "https://doi.org/10.1101/2024.12.29.24319750",
+  "abstract": "Background: Sarcoidosis represents a complex inflammatory condition of unknown origin, characterized by diverse clinical profiles, particularly identifiable as Lofgren's syndrome (LS) and non-LS cases. Delving into the genetic underpinnings of chronic sarcoidosis phenotypes is essential for advancing our understanding and treatment of this disease. Methods: To classify chronicity, pulmonologists evaluated sarcoidosis phenotypes over a follow-up period of two years, distinguishing between chronic and nonchronic classifications. We assessed the genetics of these chronicity phenotypes in a Swedish cohort of 1,515 sarcoidosis cases (679 nonchronic and 836 chronic) alongside 3,085 controls using the Immunochip array. To confirm our findings, replication analysis was conducted in a German cohort of 1,216 sarcoidosis cases (485 nonchronic and 731 chronic) and 3,042 controls. A comprehensive meta-analysis of significant SNPs (p < 5e-8) was carried out using inverse variance weighting. Additionally, we employed gene-based analysis, enrichment mapping, and pathway analysis to gain deeper functional insights. Results: Our meta analysis uncovered significant genetic associations with chronic sarcoidosis phenotypes, including LS nonchronic (rs3135356; OR = 3.13, 95% CI: 2.38 - 4.12), nonLS nonchronic (rs2395162; OR = 2.34, 95% CI: 1.96 - 2.85), and nonLS chronic cases (rs1049550; OR = 0.68, 95% CI: 0.59 - 0.76). Specifically, gene based analysis revealed that CLIC1 is associated with nonchronic forms, while ANXA11 is linked to the chronic phenotype. Our enrichment analysis highlighted the expression of quantitative trait loci (eQTLs) in immune cells, whole blood, and lung tissues. The pathway analysis pinpointed the antigen presentation pathway as vital to understanding chronicity phenotypes. Conclusions: This study illuminates the distinct genomic features that differentiate chronic sarcoidosis phenotypes, underscoring the critical involvement of immune-related genes and regulatory networks. By advancing the knowledge of sarcoidosis chronicity, these findings pave the way for targeted therapeutic interventions and personalized treatment strategies that can significantly improve patient outcomes.",
+  "doi": "10.1101/2024.12.29.24319750",
+  "arxiv_id": null,
+  "matched_keywords": [
+   "eQTL"
+  ],
+  "score": 7.5,
+  "score_reason": "Integrates GWAS immunochip meta-analysis with eQTL enrichment in immune cells and tissues to map genetic determinants of disease trajectory in sarcoidosis.",
+  "chinese_explanation": "本文利用多中心队列的 Immunochip 遗传数据，针对结节病不同临床表型（如 Lofgren 综合征）的慢性化轨迹开展关联分析与元分析，并进一步结合免疫细胞及肺组织的 eQTL 富集分析识别出 CLIC1 和 ANXA11 等关键基因。研究展示了如何利用 eQTL 数据协助解释 GWAS 疾病轨迹信号的完整流程。",
+  "key": "10.1101/2024.12.29.24319750",
+  "issue": "2026-11-17"
+ },
+ {
+  "title": "EpiPack: A computational framework for reference mapping and out-of-reference detection for single-cell ATAC-seq data with heterogeneous peak features",
+  "authors": [
+   "Yuqi Cheng",
+   "Xiuwei Zhang"
+  ],
+  "source": "Nature Communications",
+  "date": "2026-11-17",
+  "link": "https://doi.org/10.1038/s41467-026-78924-9",
+  "abstract": "",
+  "doi": "10.1038/s41467-026-78924-9",
+  "arxiv_id": null,
+  "matched_keywords": [
+   "single-cell"
+  ],
+  "score": 7.0,
+  "score_reason": "Introduces EpiPack, a methodological framework for reference mapping and out-of-reference detection in single-cell chromatin accessibility (scATAC-seq) data.",
+  "chinese_explanation": "该论文提出了名为 EpiPack 的单细胞计算框架，专门用于处理具有异质性峰特征（heterogeneous peak features）的单细胞 ATAC-seq 数据参考图谱映射与参考外细胞检测。对于关注单细胞数据统计建模和表观基因组学计算工具开发的学者来说，该方法具有较高的借鉴价值。",
+  "key": "10.1038/s41467-026-78924-9",
+  "issue": "2026-11-17"
+ },
+ {
+  "title": "Network modeling identifies vitamin B2 control of AIFM2 deficit-driven hepatocyte death in MASLD",
+  "authors": [
+   "Weihs, J.",
+   "Baldo, F.",
+   "Cardinali, A.",
+   "Youssef, G.",
+   "Ludwik, K.",
+   "Haep, N.",
+   "Tang, P.",
+   "Kumar, P.",
+   "Engelmann, C.",
+   "Quach, S.",
+   "Meindl, M.",
+   "Kucklick, M.",
+   "Engelmann, S.",
+   "Chilian, B.",
+   "Rothe, M.",
+   "Lurje, I.",
+   "Hammerich, L.",
+   "Romeike, M.",
+   "Ramachandran, P.",
+   "Kendall, T. J.",
+   "Fallowfield, J. A.",
+   "Vallier, L.",
+   "Stachelscheid, H.",
+   "Sauer, I.",
+   "Tacke, F.",
+   "Bufler, P.",
+   "Hudert, C.",
+   "Han, N.",
+   "Rezvani, M.",
+   "Takebe, T."
+  ],
+  "source": "biorxiv",
+  "date": "2026-11-14",
+  "link": "https://doi.org/10.1101/2024.10.10.617610",
+  "abstract": "Drug discovery for metabolic dysfunction-associated steatotic liver disease (MASLD) remains difficult due to network effects. We developed MetaLiver, a public resource to identify druggable nodes within complex interactomes. It incorporates a MASLD-specific knowledge graph that improves bioactive compound contextualization while reducing computing time 18.8-fold. Layering progression-resolved bulk and hepatocyte-specific single-cell MASLD data onto this graph identified the vitamin B2-dependent flavoproteome (FlavProt) as an injury-sensitive network. Induced pluripotent stem cell-derived and primary human hepatocytes validated that flavin-cofactor replenishment mitigates FlavProt-dependent dysregulation, augmenting metabolic functions under cellular stress. Saturating flavin-cofactor availability blunted human immune cell activation. Clinically, a FlavProt expression score significantly correlated with poor outcomes in retrospectively stratified MASLD patients. We identified the oxidoreductase AIFM2 from this score and established experimentally that its injury-associated deficit causes hepatocyte death yet is controllable by flavin-cofactor availability. This study reveals the FlavProt as critical yet modifiable in MASLD and establishes MetaLiver for network discovery.",
+  "doi": "10.1101/2024.10.10.617610",
+  "arxiv_id": null,
+  "matched_keywords": [
+   "single-cell"
+  ],
+  "score": 6.0,
+  "score_reason": "Combines single-cell RNA-seq with a domain-specific knowledge graph network to prioritize druggable network nodes and targets in MASLD.",
+  "chinese_explanation": "该研究构建了 MetaLiver 知识图谱，并将体转录组与肝细胞特异性单细胞 RNA-seq 数据叠加到网络上，成功筛选出与疾病进展相关的维生素 B2 依赖性黄素蛋白网络及 AIFM2 关键靶点。其将单细胞转录组数据整合入复杂网络模型的思路，对单细胞靶点挖掘具有实用价值。",
+  "key": "10.1101/2024.10.10.617610",
+  "issue": "2026-11-17"
+ },
+ {
+  "title": "Network modularity reveals context and state-dependent reorganization of time-varying functional connectivity in single-cell resolved neural activity recordings",
+  "authors": [
+   "Moon, S.",
+   "Liang, J.",
+   "Lee, H. J.",
+   "Maalouf, A.",
+   "Yu, Z.",
+   "Moza, S.",
+   "Zhang, Y.",
+   "Lu, H."
+  ],
+  "source": "biorxiv",
+  "date": "2026-11-14",
+  "link": "https://doi.org/10.1101/2025.11.02.686048",
+  "abstract": "An important goal of neuroscience is to understand how biological neural networks organize activity at multiple scales to enable complex information processing and behavioral output. To address this challenge, large-scale neural activity datasets with increased resolution and wider coverage have become more prevalent across many model systems. However, bridging the gap in scale between changes in pairwise functional connectivity between neurons and changes in brain-wide organization of activity remains a key challenge. In this work, we demonstrate application of modularity-based community detection and network modularity to single-cell resolved recordings, for the first time, as a method to summarize complex changes in time-varying functional connectivity, facilitating comparisons across multiple time windows, recordings, and conditions. We apply these methods to both single-cell resolved multi-cell and whole-brain activity recordings. In the multi-cell recordings, we find that food odor changes functional connectivity between existing network modules in a C. elegans locomotory interneuron network, rather than reorganizing them. In spontaneous whole-brain activity, we identify several key hub neurons and combinations that significantly destabilize module assignments when silenced. Together, these results demonstrate community detection and modularity as a method for detecting context and network state-dependent changes in functional connectivity at the intermediate scale of network modules in single-cell resolved neural activity. Results from these analyses facilitate future investigation of mechanisms that mediate organization of neural activity at intermediate scales.",
+  "doi": "10.1101/2025.11.02.686048",
+  "arxiv_id": null,
+  "matched_keywords": [
+   "single-cell"
+  ],
+  "score": 5.0,
+  "score_reason": "Applies network modularity and community detection to single-cell resolution neural activity recordings to quantify functional connectivity dynamics.",
+  "chinese_explanation": "该论文将基于模块度的社区检测算法应用于单细胞分辨率（single-cell resolved）的神经活性记录中，用于量化时变功能连接网络的重构。尽管其研究对象偏向神经科学的钙成像/神经元网络而非单细胞转录组，但其单细胞网络统计与模块化推断方法对复杂网络分析仍有启发。",
+  "key": "10.1101/2025.11.02.686048",
+  "issue": "2026-11-17"
+ }
+]

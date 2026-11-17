@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Paper Digest</title>
+<meta name="theme-color" content="#1b1a17">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Paper Digest">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-180.png">
+<style>
+:root{
+  --paper:#f5efe3; --ink:#1b1a17; --muted:#6f685c; --line:#d9cfbd; --card:#fffdf8;
+  --serif:Georgia,"Songti SC","Noto Serif SC","Source Han Serif SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Segoe UI","Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* masthead */
+.strip{background:var(--ink);color:var(--paper);font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:calc(8px + env(safe-area-inset-top)) 0 8px}
+.strip .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.mast{text-align:center;padding:30px 0 18px;border-bottom:4px double var(--ink)}
+.mast h1{font-family:var(--serif);font-size:clamp(40px,9vw,84px);line-height:1;margin:0;letter-spacing:-.02em;font-weight:900}
+.mast p{margin:10px 0 0;color:var(--muted);font-size:14px;letter-spacing:.08em}
+
+/* toolbar */
+.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:16px 0;position:sticky;top:0;background:var(--paper);z-index:5;border-bottom:1px solid var(--line)}
+.chip{border:1.5px solid var(--ink);background:transparent;color:var(--ink);padding:6px 16px;border-radius:999px;font:600 14px var(--sans);cursor:pointer}
+.chip.on{background:var(--ink);color:var(--paper)}
+.bar input{flex:1;min-width:160px;border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:8px 16px;font:14px var(--sans);color:var(--ink);outline:none}
+.bar input:focus{border-color:var(--ink)}
+
+/* hero */
+.hero{margin:26px 0;border-radius:20px;padding:34px;color:#fff;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start}
+.hero .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;opacity:.85;font-weight:700}
+.hero h2{font-family:var(--serif);font-size:clamp(24px,4vw,40px);line-height:1.2;margin:10px 0 12px}
+.hero .why{font-size:17px;line-height:1.75;margin:0 0 16px;max-width:60ch}
+.hero .authors{opacity:.85;font-size:14px;margin:0 0 14px}
+.hero .tag{background:rgba(255,255,255,.2);color:#fff}
+.hero .btn{background:#fff;color:var(--ink);border-color:#fff}
+.hero .ghost{border-color:rgba(255,255,255,.7);color:#fff}
+.hero .more{border-top-color:rgba(255,255,255,.35);color:#fff}
+.hero .more h4{color:rgba(255,255,255,.8)}
+
+/* score medallion */
+.score{flex:none;width:68px;height:68px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--serif);font-weight:900;font-size:24px;line-height:1;border:4px solid currentColor}
+.score small{font:600 9px var(--sans);letter-spacing:.1em;color:var(--muted);margin-top:3px}
+.hero .score{width:104px;height:104px;font-size:40px;border-width:6px}
+.hero .score small{font-size:11px}
+
+/* grid */
+.issue-h{font-family:var(--serif);font-size:22px;margin:34px 0 4px;display:flex;align-items:baseline;gap:12px}
+.issue-h span{font:13px var(--sans);color:var(--muted)}
+.issue-h::after{content:"";flex:1;border-top:1px solid var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:22px;margin:18px 0 10px}
+.card{background:var(--card);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 0 var(--line),0 10px 24px -18px rgba(0,0,0,.45)}
+.card .band{padding:10px 18px;color:#fff;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;display:flex;justify-content:space-between;gap:10px}
+.card .body{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card .top{display:flex;gap:14px;align-items:flex-start}
+.card h3{font-family:var(--serif);font-size:19px;line-height:1.3;margin:0}
+.card .authors{font-size:13px;color:var(--muted);margin:0}
+.card .why{font-size:15px;margin:0}
+.read h3,.read h2{opacity:.55}
+
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12px;padding:2px 10px;border-radius:999px;background:#ece4d3;color:#4b453b}
+.acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:auto;padding-top:6px}
+.btn,.ghost{font:600 14px var(--sans);padding:8px 16px;border-radius:999px;border:1.5px solid var(--ink);cursor:pointer;text-decoration:none;display:inline-block}
+.btn{background:var(--ink);color:var(--paper)}
+.ghost{background:transparent;color:var(--ink)}
+.ghost.fav{background:#ffc914;border-color:#ffc914;color:var(--ink)}
+.more{border-top:1px dashed var(--line);padding-top:10px;font-size:14px;color:#3d382f}
+.more h4{margin:8px 0 2px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.more p{margin:0 0 6px}
+.kw{background:var(--card);border-radius:16px;padding:20px;margin-top:18px;box-shadow:0 1px 0 var(--line)}
+.kw h2{font-family:var(--serif);font-size:20px;margin:0 0 4px}
+.kw p{margin:0 0 12px;font-size:13px;color:var(--muted)}
+.kw .tag{cursor:pointer;border:0;font:13px var(--sans);padding:4px 12px}
+.kw .tag:hover{background:var(--ink);color:var(--paper)}
+.kw .acts{margin-top:16px}
+.empty{text-align:center;color:var(--muted);padding:70px 0;font-family:var(--serif);font-size:20px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:40px 0 calc(40px + env(safe-area-inset-bottom));letter-spacing:.08em}
+
+@media(max-width:640px){
+  .hero{grid-template-columns:1fr;padding:24px}
+  .hero .score{width:76px;height:76px;font-size:28px;order:-1}
+  .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="strip"><div class="wrap"><span id="issueLabel"></span><span id="stats"></span></div></div>
+<div class="wrap">
+  <header class="mast">
+    <h1>Paper Digest</h1>
+    <p>每三天一期 · 为你精选的方法学与遗传统计论文</p>
+  </header>
+  <nav class="bar">
+    <button class="chip" data-view="latest">最新一期</button>
+    <button class="chip" data-view="all">全部往期</button>
+    <button class="chip" data-view="fav">★ 收藏</button>
+    <button class="chip" id="kwBtn">关键词</button>
+    <input id="q" type="search" placeholder="搜索标题、作者、关键词…">
+  </nav>
+  <section id="kwPanel" class="kw" hidden></section>
+  <main id="main"></main>
+  <footer>PAPER DIGEST · 由 GitHub Actions 自动生成 · 更新于 <span id="updated"></span></footer>
+</div>
+
+<script id="data" type="application/json">{"updated": "2026-11-17", "papers": [{"title": "Multi-omics Mendelian randomization and cartilage transcriptomics prioritize genetic loci and candidate genes for osteoarthritis", "authors": ["Zhi-Meng Zhang", "Qing-Yan Wang"], "source": "Journal of Applied Genetics", "date": "2026-11-17", "link": "https://doi.org/10.1007/s13353-026-01134-y", "abstract": "", "doi": "10.1007/s13353-026-01134-y", "arxiv_id": null, "matched_keywords": ["Mendelian randomization"], "score": 8.5, "score_reason": "Directly applies multi-omics Mendelian randomization combined with transcriptomic data to perform causal locus and gene prioritization for osteoarthritis.", "chinese_explanation": "该研究结合多组学孟德尔随机化（Multi-omics MR）与软骨组织转录组学数据，对骨关节炎的致病遗传位点和候选因果基因进行了系统筛选与优先排序。这种融合MR因果推断与组织特异性转录组的整合分析框架，与多组学因果推断研究方向高度契合。", "key": "10.1007/s13353-026-01134-y", "issue": "2026-11-17"}, {"title": "Genetic Determinants of Disease Trajectory in Sarcoidosis", "authors": ["Jin, S.", "Kullberg, S.", "Darlington, P.", "Iseda, T.", "Chuquimia, O.", "Vasila, V.", "Kockum, I.", "Smed-Sorensen, A.", "Eklund, A.", "Ellinghaus, D.", "Prasse, A.", "Schreiber, S.", "Mueller-Quernheim, J.", "Mathias, K.", "Mirsaeidi, M.", "Padyukov, L.", "Spagnolo, P.", "Sharp, M.", "Rivera, N. V."], "source": "medrxiv", "date": "2026-11-14", "link": "https://doi.org/10.1101/2024.12.29.24319750", "abstract": "Background: Sarcoidosis represents a complex inflammatory condition of unknown origin, characterized by diverse clinical profiles, particularly identifiable as Lofgren's syndrome (LS) and non-LS cases. Delving into the genetic underpinnings of chronic sarcoidosis phenotypes is essential for advancing our understanding and treatment of this disease. Methods: To classify chronicity, pulmonologists evaluated sarcoidosis phenotypes over a follow-up period of two years, distinguishing between chronic and nonchronic classifications. We assessed the genetics of these chronicity phenotypes in a Swedish cohort of 1,515 sarcoidosis cases (679 nonchronic and 836 chronic) alongside 3,085 controls using the Immunochip array. To confirm our findings, replication analysis was conducted in a German cohort of 1,216 sarcoidosis cases (485 nonchronic and 731 chronic) and 3,042 controls. A comprehensive meta-analysis of significant SNPs (p \u003c 5e-8) was carried out using inverse variance weighting. Additionally, we employed gene-based analysis, enrichment mapping, and pathway analysis to gain deeper functional insights. Results: Our meta analysis uncovered significant genetic associations with chronic sarcoidosis phenotypes, including LS nonchronic (rs3135356; OR = 3.13, 95% CI: 2.38 - 4.12), nonLS nonchronic (rs2395162; OR = 2.34, 95% CI: 1.96 - 2.85), and nonLS chronic cases (rs1049550; OR = 0.68, 95% CI: 0.59 - 0.76). Specifically, gene based analysis revealed that CLIC1 is associated with nonchronic forms, while ANXA11 is linked to the chronic phenotype. Our enrichment analysis highlighted the expression of quantitative trait loci (eQTLs) in immune cells, whole blood, and lung tissues. The pathway analysis pinpointed the antigen presentation pathway as vital to understanding chronicity phenotypes. Conclusions: This study illuminates the distinct genomic features that differentiate chronic sarcoidosis phenotypes, underscoring the critical involvement of immune-related genes and regulatory networks. By advancing the knowledge of sarcoidosis chronicity, these findings pave the way for targeted therapeutic interventions and personalized treatment strategies that can significantly improve patient outcomes.", "doi": "10.1101/2024.12.29.24319750", "arxiv_id": null, "matched_keywords": ["eQTL"], "score": 7.5, "score_reason": "Integrates GWAS immunochip meta-analysis with eQTL enrichment in immune cells and tissues to map genetic determinants of disease trajectory in sarcoidosis.", "chinese_explanation": "本文利用多中心队列的 Immunochip 遗传数据，针对结节病不同临床表型（如 Lofgren 综合征）的慢性化轨迹开展关联分析与元分析，并进一步结合免疫细胞及肺组织的 eQTL 富集分析识别出 CLIC1 和 ANXA11 等关键基因。研究展示了如何利用 eQTL 数据协助解释 GWAS 疾病轨迹信号的完整流程。", "key": "10.1101/2024.12.29.24319750", "issue": "2026-11-17"}, {"title": "EpiPack: A computational framework for reference mapping and out-of-reference detection for single-cell ATAC-seq data with heterogeneous peak features", "authors": ["Yuqi Cheng", "Xiuwei Zhang"], "source": "Nature Communications", "date": "2026-11-17", "link": "https://doi.org/10.1038/s41467-026-78924-9", "abstract": "", "doi": "10.1038/s41467-026-78924-9", "arxiv_id": null, "matched_keywords": ["single-cell"], "score": 7.0, "score_reason": "Introduces EpiPack, a methodological framework for reference mapping and out-of-reference detection in single-cell chromatin accessibility (scATAC-seq) data.", "chinese_explanation": "该论文提出了名为 EpiPack 的单细胞计算框架，专门用于处理具有异质性峰特征（heterogeneous peak features）的单细胞 ATAC-seq 数据参考图谱映射与参考外细胞检测。对于关注单细胞数据统计建模和表观基因组学计算工具开发的学者来说，该方法具有较高的借鉴价值。", "key": "10.1038/s41467-026-78924-9", "issue": "2026-11-17"}, {"title": "Network modeling identifies vitamin B2 control of AIFM2 deficit-driven hepatocyte death in MASLD", "authors": ["Weihs, J.", "Baldo, F.", "Cardinali, A.", "Youssef, G.", "Ludwik, K.", "Haep, N.", "Tang, P.", "Kumar, P.", "Engelmann, C.", "Quach, S.", "Meindl, M.", "Kucklick, M.", "Engelmann, S.", "Chilian, B.", "Rothe, M.", "Lurje, I.", "Hammerich, L.", "Romeike, M.", "Ramachandran, P.", "Kendall, T. J.", "Fallowfield, J. A.", "Vallier, L.", "Stachelscheid, H.", "Sauer, I.", "Tacke, F.", "Bufler, P.", "Hudert, C.", "Han, N.", "Rezvani, M.", "Takebe, T."], "source": "biorxiv", "date": "2026-11-14", "link": "https://doi.org/10.1101/2024.10.10.617610", "abstract": "Drug discovery for metabolic dysfunction-associated steatotic liver disease (MASLD) remains difficult due to network effects. We developed MetaLiver, a public resource to identify druggable nodes within complex interactomes. It incorporates a MASLD-specific knowledge graph that improves bioactive compound contextualization while reducing computing time 18.8-fold. Layering progression-resolved bulk and hepatocyte-specific single-cell MASLD data onto this graph identified the vitamin B2-dependent flavoproteome (FlavProt) as an injury-sensitive network. Induced pluripotent stem cell-derived and primary human hepatocytes validated that flavin-cofactor replenishment mitigates FlavProt-dependent dysregulation, augmenting metabolic functions under cellular stress. Saturating flavin-cofactor availability blunted human immune cell activation. Clinically, a FlavProt expression score significantly correlated with poor outcomes in retrospectively stratified MASLD patients. We identified the oxidoreductase AIFM2 from this score and established experimentally that its injury-associated deficit causes hepatocyte death yet is controllable by flavin-cofactor availability. This study reveals the FlavProt as critical yet modifiable in MASLD and establishes MetaLiver for network discovery.", "doi": "10.1101/2024.10.10.617610", "arxiv_id": null, "matched_keywords": ["single-cell"], "score": 6.0, "score_reason": "Combines single-cell RNA-seq with a domain-specific knowledge graph network to prioritize druggable network nodes and targets in MASLD.", "chinese_explanation": "该研究构建了 MetaLiver 知识图谱，并将体转录组与肝细胞特异性单细胞 RNA-seq 数据叠加到网络上，成功筛选出与疾病进展相关的维生素 B2 依赖性黄素蛋白网络及 AIFM2 关键靶点。其将单细胞转录组数据整合入复杂网络模型的思路，对单细胞靶点挖掘具有实用价值。", "key": "10.1101/2024.10.10.617610", "issue": "2026-11-17"}, {"title": "Network modularity reveals context and state-dependent reorganization of time-varying functional connectivity in single-cell resolved neural activity recordings", "authors": ["Moon, S.", "Liang, J.", "Lee, H. J.", "Maalouf, A.", "Yu, Z.", "Moza, S.", "Zhang, Y.", "Lu, H."], "source": "biorxiv", "date": "2026-11-14", "link": "https://doi.org/10.1101/2025.11.02.686048", "abstract": "An important goal of neuroscience is to understand how biological neural networks organize activity at multiple scales to enable complex information processing and behavioral output. To address this challenge, large-scale neural activity datasets with increased resolution and wider coverage have become more prevalent across many model systems. However, bridging the gap in scale between changes in pairwise functional connectivity between neurons and changes in brain-wide organization of activity remains a key challenge. In this work, we demonstrate application of modularity-based community detection and network modularity to single-cell resolved recordings, for the first time, as a method to summarize complex changes in time-varying functional connectivity, facilitating comparisons across multiple time windows, recordings, and conditions. We apply these methods to both single-cell resolved multi-cell and whole-brain activity recordings. In the multi-cell recordings, we find that food odor changes functional connectivity between existing network modules in a C. elegans locomotory interneuron network, rather than reorganizing them. In spontaneous whole-brain activity, we identify several key hub neurons and combinations that significantly destabilize module assignments when silenced. Together, these results demonstrate community detection and modularity as a method for detecting context and network state-dependent changes in functional connectivity at the intermediate scale of network modules in single-cell resolved neural activity. Results from these analyses facilitate future investigation of mechanisms that mediate organization of neural activity at intermediate scales.", "doi": "10.1101/2025.11.02.686048", "arxiv_id": null, "matched_keywords": ["single-cell"], "score": 5.0, "score_reason": "Applies network modularity and community detection to single-cell resolution neural activity recordings to quantify functional connectivity dynamics.", "chinese_explanation": "该论文将基于模块度的社区检测算法应用于单细胞分辨率（single-cell resolved）的神经活性记录中，用于量化时变功能连接网络的重构。尽管其研究对象偏向神经科学的钙成像/神经元网络而非单细胞转录组，但其单细胞网络统计与模块化推断方法对复杂网络分析仍有启发。", "key": "10.1101/2025.11.02.686048", "issue": "2026-11-17"}], "keywords": ["Mendelian randomization", "instrumental variables", "instrumental variable", "GWAS", "genome-wide association", "pleiotropy", "causal inference", "differential expression", "perturb-seq", "perturb seq", "single-cell RNA-seq", "single cell RNA-seq", "single-cell", "eQTL", "TWAS", "multi-outcome", "multi-response", "multivariate response", "robust inference"], "keywords_edit_url": "https://github.com/zenosyne1128/paper-digest/edit/main/keywords.txt"}</script>
+<script>
+const DATA = JSON.parse(document.getElementById('data').textContent);
+const PAPERS = DATA.papers, COLORS = ['#e4572e','#1f7a8c','#5b5f97','#c2185b','#2e7d32','#b7791f'];
+const store = {
+  get(k){ try { return new Set(JSON.parse(localStorage.getItem(k) || '[]')); } catch(e){ return new Set(); } },
+  set(k,s){ try { localStorage.setItem(k, JSON.stringify([...s])); } catch(e){} }
+};
+const favs = store.get('pd-fav'), read = store.get('pd-read'), open = new Set();
+const state = { view:'latest', q:'' };
+const issues = [...new Set(PAPERS.map(p => p.issue))].sort().reverse();
+
+function h(tag, attrs, ...kids){
+  const el = document.createElement(tag);
+  for (const [k,v] of Object.entries(attrs || {})){
+    if (k === 'on') for (const [e,f] of Object.entries(v)) el.addEventListener(e,f);
+    else if (k === 'style') el.style.cssText = v;
+    else if (v !== null && v !== undefined && v !== false) el.setAttribute(k, v);
+  }
+  for (const kid of kids.flat()) if (kid) el.append(kid);
+  return el;
+}
+const scoreColor = s => s == null ? '#888' : s >= 8 ? '#15803d' : s >= 6 ? '#b7791f' : s >= 4 ? '#d9580d' : '#c81e1e';
+const scoreText = s => s == null ? '–' : Number(s).toFixed(1);
+const safeUrl = u => /^https?:\/\//i.test(u || '') ? u : null;
+const colorOf = p => COLORS[PAPERS.indexOf(p) % COLORS.length];
+const authorsOf = p => (p.authors || []).slice(0,5).join(', ') + ((p.authors || []).length > 5 ? ' 等' : '');
+
+function medallion(p){
+  return h('div', {class:'score', style:'color:'+scoreColor(p.score), title:'相关度评分'}, scoreText(p.score), h('small', {}, '/ 10'));
+}
+function actions(p){
+  const url = safeUrl(p.link);
+  const isFav = favs.has(p.key), isOpen = open.has(p.key);
+  return h('div', {class:'acts'},
+    url && h('a', {class:'btn', href:url, target:'_blank', rel:'noopener', on:{click(){ read.add(p.key); store.set('pd-read', read); render(); }}}, '阅读原文 →'),
+    h('button', {class:'ghost' + (isFav ? ' fav' : ''), on:{click(){ isFav ? favs.delete(p.key) : favs.add(p.key); store.set('pd-fav', favs); render(); }}}, isFav ? '★ 已收藏' : '☆ 收藏'),
+    h('button', {class:'ghost', on:{click(){ isOpen ? open.delete(p.key) : open.add(p.key); render(); }}}, isOpen ? '收起' : '摘要')
+  );
+}
+function details(p){
+  if (!open.has(p.key)) return null;
+  return h('div', {class:'more'},
+    p.score_reason && h('h4', {}, '评分理由'), p.score_reason && h('p', {}, p.score_reason),
+    h('h4', {}, '原文摘要'), h('p', {}, p.abstract || '暂无摘要。'));
+}
+const tags = p => h('div', {class:'tags'}, (p.matched_keywords || []).map(k => h('span', {class:'tag'}, k)));
+
+function hero(p){
+  return h('section', {class:'hero' + (read.has(p.key) ? ' read' : ''), style:'background:'+colorOf(p)},
+    h('div', {},
+      h('div', {class:'kicker'}, '本期头条 · ' + (p.source || '') + ' · ' + (p.date || '')),
+      h('h2', {}, p.title),
+      h('p', {class:'authors'}, authorsOf(p)),
+      h('p', {class:'why'}, p.chinese_explanation || ''),
+      tags(p), h('div', {style:'height:14px'}), actions(p), details(p)),
+    medallion(p));
+}
+function card(p){
+  return h('article', {class:'card' + (read.has(p.key) ? ' read' : '')},
+    h('div', {class:'band', style:'background:'+colorOf(p)}, h('span', {}, p.source || ''), h('span', {}, p.date || '')),
+    h('div', {class:'body'},
+      h('div', {class:'top'}, medallion(p), h('h3', {}, p.title)),
+      h('p', {class:'authors'}, authorsOf(p)),
+      h('p', {class:'why'}, p.chinese_explanation || ''),
+      tags(p), actions(p), details(p)));
+}
+function matches(p){
+  if (!state.q) return true;
+  const hay = [p.title, (p.authors || []).join(' '), (p.matched_keywords || []).join(' '), p.chinese_explanation, p.source].join(' ').toLowerCase();
+  return state.q.toLowerCase().split(/\s+/).every(w => hay.includes(w));
+}
+const byScore = (a,b) => (b.score || 0) - (a.score || 0);
+
+function render(){
+  document.querySelectorAll('.chip[data-view]').forEach(c => c.classList.toggle('on', c.dataset.view === state.view));
+  const main = document.getElementById('main');
+  main.replaceChildren();
+  let list = PAPERS.filter(matches);
+  if (state.view === 'fav') list = list.filter(p => favs.has(p.key));
+  if (state.view === 'latest' && !state.q) list = list.filter(p => p.issue === issues[0]);
+  if (!list.length){
+    main.append(h('div', {class:'empty'}, PAPERS.length ? (state.view === 'fav' ? '还没有收藏的论文。' : '没有匹配的论文。') : '还没有任何一期内容，等待第一次自动运行。'));
+    return;
+  }
+  if (state.view === 'latest' && !state.q){
+    list.sort(byScore);
+    main.append(hero(list[0]));
+    if (list.length > 1) main.append(h('div', {class:'grid'}, list.slice(1).map(card)));
+    return;
+  }
+  for (const issue of issues){
+    const group = list.filter(p => p.issue === issue).sort(byScore);
+    if (!group.length) continue;
+    main.append(h('h2', {class:'issue-h'}, issue, h('span', {}, group.length + ' 篇')), h('div', {class:'grid'}, group.map(card)));
+  }
+}
+
+function renderKeywords(){
+  const kws = DATA.keywords || [], url = safeUrl(DATA.keywords_edit_url);
+  const q = document.getElementById('q');
+  document.getElementById('kwPanel').replaceChildren(
+    h('h2', {}, '抓取关键词 · ' + kws.length + ' 个'),
+    h('p', {}, '每次自动运行都会按这些关键词筛选新论文。点击任意关键词可在已收录的论文中搜索。'),
+    h('div', {class:'tags'}, kws.map(k => h('button', {class:'tag', on:{click(){ q.value = k; state.q = k; state.view = 'all'; render(); }}}, k))),
+    h('div', {class:'acts'}, url
+      ? [h('a', {class:'btn', href:url, target:'_blank', rel:'noopener'}, '在 GitHub 上添加 / 修改关键词 →'),
+         h('span', {style:'font-size:13px;color:var(--muted)'}, '每行一个，提交后下一次运行生效')]
+      : h('span', {style:'font-size:13px;color:var(--muted)'}, '本地预览：直接编辑项目里的 keywords.txt（每行一个）。发布到 GitHub 后这里会出现编辑按钮。')));
+}
+renderKeywords();
+document.getElementById('kwBtn').addEventListener('click', e => {
+  const panel = document.getElementById('kwPanel');
+  panel.hidden = !panel.hidden;
+  e.currentTarget.classList.toggle('on', !panel.hidden);
+});
+document.querySelectorAll('.chip[data-view]').forEach(c => c.addEventListener('click', () => { state.view = c.dataset.view; render(); }));
+document.getElementById('q').addEventListener('input', e => { state.q = e.target.value.trim(); render(); });
+const latest = PAPERS.filter(p => p.issue === issues[0]);
+document.getElementById('issueLabel').textContent = issues.length ? '第 ' + issues.length + ' 期 · ' + issues[0] : '创刊准备中';
+document.getElementById('stats').textContent = '本期 ' + latest.length + ' 篇 · 累计 ' + PAPERS.length + ' 篇';
+document.getElementById('updated').textContent = DATA.updated || '';
+render();
+</script>
+</body>
+</html>
