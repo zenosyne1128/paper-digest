@@ -1,0 +1,59 @@
+# 关键词已移到 keywords.txt（每行一个），方便在 GitHub 网页上直接编辑。
+
+selected_count: 5
+
+date_range:
+  days_back: 1
+  # Optional explicit range if CLI dates are not provided:
+  # from: 2026-05-01
+  # to: 2026-05-07
+
+# LLM used for ranking + Chinese summaries. Providers are tried in order: the next
+# one is used only if the previous has no key or its call fails.
+# Keys live in .env (local) / GitHub Secrets (Actions), never in this file.
+llm:
+  temperature: 0.2
+  providers:
+    - provider: deepseek            # primary (paid, very cheap)
+      model: deepseek-flash
+      api_key_env: DEEPSEEK_API_KEY
+    - provider: gemini              # fallback (free tier)
+      model: gemini-3.5-flash
+      api_key_env: GEMINI_API_KEY
+
+arxiv:
+  categories:
+    - stat.ME
+    - stat.TH
+    - stat.ML
+    - cs.LG
+    - q-bio.GN
+    - q-bio.QM
+    - q-bio.NC
+  max_results: 150
+
+preprints:
+  servers:
+    - biorxiv
+    - medrxiv
+
+# Add journal RSS feeds here when a stable feed is available.
+# Example:
+# rss_feeds:
+#   - name: Nature Genetics
+#     url: https://www.nature.com/ng.rss
+rss_feeds:
+  - name: Nature Genetics
+    url: https://www.nature.com/ng.rss
+
+crossref:
+  rows_per_journal: 25
+
+journals:
+  - Journal of the American Statistical Association
+  - The Annals of Statistics
+  - The Annals of Applied Statistics
+  - Biometrika
+  - Biometrics
+  - American Journal of Human Genetics
+  - Nature Genetics

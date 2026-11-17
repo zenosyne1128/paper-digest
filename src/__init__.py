@@ -1,0 +1,1 @@
+"""Daily literature digest package."""

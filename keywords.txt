@@ -1,0 +1,20 @@
+# 每行一个关键词；以 # 开头的行会被忽略。改动在下一次自动运行时生效。
+Mendelian randomization
+instrumental variables
+instrumental variable
+GWAS
+genome-wide association
+pleiotropy
+causal inference
+differential expression
+perturb-seq
+perturb seq
+single-cell RNA-seq
+single cell RNA-seq
+single-cell
+eQTL
+TWAS
+multi-outcome
+multi-response
+multivariate response
+robust inference
