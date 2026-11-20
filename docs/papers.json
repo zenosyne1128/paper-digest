@@ -154,5 +154,132 @@
   "chinese_explanation": "该论文将网络模块化与社区检测算法应用于单细胞精度的神经元电/钙活动记录，探讨线虫和脑网络在不同刺激下的功能连接重构。尽管涉及单细胞分辨率，但其对象为神经功能成像而非单细胞基因组学或遗传因果推断（MR/eQTL），与核心研究方向契合度较低。",
   "key": "10.1101/2025.11.02.686048",
   "issue": "2026-11-17"
+ },
+ {
+  "title": "WAIVES: Weak-form Asymptotically-unbiased Instrumental-Variable Estimation for SDEs",
+  "authors": [
+   "Hamza Ruzayqat",
+   "David M. Bortz",
+   "Vanja Dukić"
+  ],
+  "source": "arXiv",
+  "date": "2026-11-18",
+  "link": "https://arxiv.org/abs/2611.23951v1",
+  "abstract": "Weak-form methods have transformed inference for deterministic dynamical systems. By integrating the governing equations against smooth, compactly supported test functions, they trade noise-amplifying differentiation for noise-attenuating integration, yielding fast and robust estimates. Extending this idea to stochastic differential equations (SDEs) has proven harder, and a consistent single-trajectory formulation has remained out of reach. Applied naively in the time domain, the weak form makes the regressors and the errors functionals of the same noise, creating endogeneity that leaves weak-form least squares biased and inconsistent. We resolve it with instrumental variables, a classical idea from econometrics. Weak-form integrals over nearby disjoint time windows prove to be valid instruments, correlated with the regressors yet uncorrelated with the error, restoring consistency and asymptotic normality. The resulting generalized-method-of-moments estimator, WAIVES (Weak-form Asymptotically-unbiased Instrumental-Variable Estimation for SDEs), requires only a linear solve, with no likelihood evaluations, filtering, or simulation. It is therefore an order of magnitude faster than exact-likelihood methods where those exist, and it applies unchanged where they do not, with standard errors and calibrated confidence intervals supplied by the moment conditions. It also separates measurement noise from the intrinsic randomness of the dynamics. Across nine example systems, spanning linear, bistable, chaotic, excitable, state-dependent-diffusion, non-polynomial, hypoelliptic, and high-dimensional regimes (up to 120 dimensions), WAIVES recovers nonlinear drift and diffusion with negligible bias and near-nominal interval coverage. We close with two real-data illustrations: a 167-year North Atlantic sea-surface-temperature record and an optical-tweezer calibration.",
+  "doi": null,
+  "arxiv_id": "2611.23951",
+  "matched_keywords": [
+   "instrumental variables",
+   "instrumental variable"
+  ],
+  "score": 9.2,
+  "score_reason": "Introduces WAIVES, an instrumental variable (IV) GMM estimator that resolves endogeneity in stochastic differential equations using disjoint time-window integrals as instruments.",
+  "chinese_explanation": "该研究提出了 WAIVES 方法，利用相邻不相交时间窗口的弱形式积分作为工具变量（IV），解决了随机微分方程（SDE）推断中的内生性（Endogeneity）偏误问题。该方法基于广义矩估计（GMM），无需似然评估或轨迹模拟即可实现一致的非线性漂移与扩散参数估计，为连续动态系统中的工具变量与因果推断提供了全新的可复用统计思路。",
+  "key": "2611.23951",
+  "issue": "2026-11-20"
+ },
+ {
+  "title": "ReliFlow: Reliability-Calibrated Residual Transport for Combinatorial Single-Cell Perturbation Prediction",
+  "authors": [
+   "Jinrui David",
+   "Yun Peng"
+  ],
+  "source": "arXiv",
+  "date": "2026-11-18",
+  "link": "https://arxiv.org/abs/2611.23999v1",
+  "abstract": "Predicting the transcriptional response to combined perturbations requires distinguishing interactions between interventions from errors in their individual effect estimates. The latter become more pronounced when single-perturbation evidence is sparse or withheld. We introduce a conditional flow-matching model that estimates the reliability of single-gene effects from training-only cross-fitting and uses those estimates to calibrate the additive source distribution. The velocity is decomposed into a known correction of the additive reference and a learned residual transport field. On Norman genetic perturbations, reduces mean absolute error (MAE) from 0.142 to 0.131 for unseen combinations of observed singles and from 0.198 to 0.178 when constituent singles are withheld. On held-out ComboSciPlex drug combinations, MAE decreases from 0.191 to 0.176. Non-additive residual correlation improves from 0.574 to 0.638, and component ablations identify the contribution of reliability weighting. The results indicate that accounting for uncertain constituent effects improves generalization to unseen genetic and chemical combinations, with a moderate increase in training cost.",
+  "doi": null,
+  "arxiv_id": "2611.23999",
+  "matched_keywords": [
+   "single-cell"
+  ],
+  "score": 9.0,
+  "score_reason": "Presents ReliFlow, a conditional flow-matching framework for single-cell combinatorial perturbation prediction that calibrates single-gene effect uncertainty via cross-fitting.",
+  "chinese_explanation": "针对单细胞基因扰动（Perturb-seq）预测中组合效应难以建模的问题，该论文提出了 ReliFlow 框架。该方法通过交叉拟合估计单基因效应的可靠性，并利用残差运输场（Residual Transport Field）捕获非加性基因互作，显著提升了对未观察过的基因扰动组合在单细胞转录组层面响应的预测精度。",
+  "key": "2611.23999",
+  "issue": "2026-11-20"
+ },
+ {
+  "title": "Genotype and environment shape gene regulatory variation in switchgrass",
+  "authors": [
+   "Berg, C. S.",
+   "Pereira, C. G.",
+   "Sreedasyam, A.",
+   "Lovell, J.",
+   "Weng, X.",
+   "Bonnette, J.",
+   "Yoshinaga, Y.",
+   "Daum, C.",
+   "Lipzen, A.",
+   "Schmutz, J.",
+   "Juenger, T. E.",
+   "Lowry, D. B."
+  ],
+  "source": "biorxiv",
+  "date": "2026-11-17",
+  "link": "https://doi.org/10.64898/2026.11.11.765962",
+  "abstract": "Local adaptation is contingent on genotype-by-environment interactions, which are often mediated by variation in gene expression. The causes and consequences of variation in gene expression are complex, and they are rarely evaluated under the multi-dimensional environmental regimes that occur in the field. Here, we investigate switchgrass gene expression variation in contrasting sites in Michigan and Texas. We examined differentially expressed genes between upland and lowland switchgrass genotypes and found that genes with genotype x environment (GxE) interactions were enriched for GO terms related to phosphorus metabolism. After mapping expression quantitative trait loci (eQTL) in a switchgrass diversity panel in both sites, we compared distinct categories of eQTL to investigate their effects on gene expression in contrasting environments and their evolutionary history. Cis regulatory variants are more likely to have consistent effects across sites, while trans regulatory variants were more likely to have site-specific effects, and are more likely to underlie changes in gene expression between sites. Lower minor allele frequency in trans regulatory variants is consistent with stronger purifying selection. Furthermore, site-specific regulatory variants exhibited intermediate minor allele frequencies, consistent with balancing selection or soft sweeps. Finally, motivated by enrichment for phosphorus-related genes exhibiting differential expression between sites, we conducted a GWAS for leaf phosphorus concentration in the diversity panel. By overlaying the GWAS results with the eQTL map, we characterized cis and trans regulation of candidate genes for leaf P concentration in Michigan and Texas. Together, this work provides novel insights on the molecular basis and evolutionary history of GxE interactions in switchgrass.",
+  "doi": "10.64898/2026.11.11.765962",
+  "arxiv_id": null,
+  "matched_keywords": [
+   "GWAS",
+   "differential expression",
+   "eQTL"
+  ],
+  "score": 8.5,
+  "score_reason": "Maps cis- and trans-eQTLs under multi-environment field conditions and integrates eQTLs with GWAS summary data for differential gene expression analysis.",
+  "chinese_explanation": "该研究在不同自然环境下对基因表达调控（eQTL）进行了深入剖析，系统比较了 cis- 与 trans-eQTL 的表型效应稳定性与演化选择特征。此外，文章将 eQTL 映射与叶片磷浓度的 GWAS 信号进行重叠与整合分析，为结合 GWAS 和 eQTL 研究环境交互与基因差异表达提供了典型的实验设计与分析范例。",
+  "key": "10.64898/2026.11.11.765962",
+  "issue": "2026-11-20"
+ },
+ {
+  "title": "Regularized ensemble polygenic risk prediction with GWAS summary statistics",
+  "authors": [
+   "Zijie Zhao",
+   "Stephen Dorn",
+   "Yuchang Wu",
+   "Xiaoyu Yang",
+   "Alexander Beckerman",
+   "Jin Jin",
+   "Qiongshi Lu"
+  ],
+  "source": "Nature Genetics",
+  "date": "2026-11-18",
+  "link": "https://www.nature.com/articles/s41588-026-02844-z",
+  "abstract": "<p>Nature Genetics, Published online: 18 November 2026; <a href=\"https://www.nature.com/articles/s41588-026-02844-z\">doi:10.1038/s41588-026-02844-z</a></p>PUMAS-ensemble combines multiple polygenic risk scores using genome-wide association study summary statistics, improving genetic risk prediction across traits and ancestry groups without requiring individual-level training data.",
+  "doi": "10.1038/s41588-026-02844-z",
+  "arxiv_id": null,
+  "matched_keywords": [
+   "GWAS",
+   "genome-wide association"
+  ],
+  "score": 8.4,
+  "score_reason": "Develops PUMAS-ensemble, a method using GWAS summary statistics to construct regularized ensemble polygenic risk prediction without individual-level training data.",
+  "chinese_explanation": "该论文提出了 PUMAS-ensemble 方法，仅利用 GWAS 汇总统计数据（Summary Statistics）即可将多种多基因风险评分（PRS）进行正则化集成，无需个体级（Individual-level）训练数据。该方法显著提升了跨性状和跨群体遗传预测的准确度，对基于 GWAS 汇总数据的基因表达与表型推断极具实用价值。",
+  "key": "10.1038/s41588-026-02844-z",
+  "issue": "2026-11-20"
+ },
+ {
+  "title": "Elysium: Simulation-Free Unbalanced Schrödinger Bridges",
+  "authors": [
+   "Zihan Wang",
+   "Jianzhe Li",
+   "Zhenyi Zhang",
+   "Peijie Zhou"
+  ],
+  "source": "arXiv",
+  "date": "2026-11-18",
+  "link": "https://arxiv.org/abs/2611.24763v1",
+  "abstract": "Reconstructing cellular dynamics from snapshots is challenging because the destructive nature of single-cell measurements makes tracking the same cells over time impossible. Cellular dynamics are inherently stochastic and involve changes in population size through proliferation and apoptosis. Growth-based methods represent population change as a rate on the density, which does not assign exits and entries to individual cells. Unbalanced Schrödinger bridges model individual events, but neural solvers for killed diffusion bridges simulate trajectories during training. We introduce Elysium, a simulation-free solver that jointly learns state transition and mass change. Using a killed Brownian reference and its time reversal, Elysium constructs direct regression objectives from an optimal endpoint coupling and conditional bridge distributions, without simulating trajectories during training. We show that the minimizers of the expected training objectives recover the optimal unbalanced Schrödinger bridge. Empirically, Elysium reconstructs state transitions, population size, and event distributions on simulated benchmarks with known killed-diffusion ground truth, outperforming existing deterministic and bridge-based solvers. On single-cell time courses, it interpolates cell state distributions at unobserved time points, tracks population expansion and contraction, and captures biphasic drug-response dynamics.",
+  "doi": null,
+  "arxiv_id": "2611.24763",
+  "matched_keywords": [
+   "single-cell"
+  ],
+  "score": 8.3,
+  "score_reason": "Develops Elysium, a simulation-free solver for unbalanced Schrödinger bridges to model single-cell dynamics, cell state transitions, and mass changes.",
+  "chinese_explanation": "单细胞快照数据由于破坏性测量难以直接追踪同一细胞的演化轨迹，该研究提出了无模拟的不平衡薛定谔桥求解器 Elysium。它通过构建直接回归目标，联合学习细胞状态转移与细胞增殖/凋亡引发的群体质量变化，能够精确插值未观测时间点的单细胞状态分布并刻画复杂的细胞动态。",
+  "key": "2611.24763",
+  "issue": "2026-11-20"
  }
 ]
