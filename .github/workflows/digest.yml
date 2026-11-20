@@ -2,9 +2,11 @@ name: Paper Digest
 
 on:
   schedule:
-    # 08:00 UTC on the 1st, 4th, 7th … 28th. Cron has no "every 3 days", so the
-    # gap around month end varies by a day; already-published papers are skipped.
-    - cron: "0 8 1,4,7,10,13,16,19,22,25,28 * *"
+    # 1st, 4th, 7th … 28th of each month. Cron has no "every 3 days", so the gap
+    # around month end varies by a day. Three slots per day (08:00, 14:00, 20:00
+    # UTC): if the LLMs are down at 08:00 the later slots retry; once a slot has
+    # published, the rest exit immediately.
+    - cron: "0 8,14,20 1,4,7,10,13,16,19,22,25,28 * *"
   workflow_dispatch:   # manual "Run workflow" button in the Actions tab
 
 permissions:
@@ -13,12 +15,12 @@ permissions:
 jobs:
   digest:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
           cache: "pip"
@@ -27,6 +29,7 @@ jobs:
 
       - name: Fetch → score → build web app → send email
         env:
+          PYTHONUNBUFFERED: "1"   # keep log lines in the order they happen
           # Only the key for the provider chosen in config.yaml needs to exist.
           GEMINI_API_KEY:   ${{ secrets.GEMINI_API_KEY }}
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}

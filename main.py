@@ -19,7 +19,7 @@ from src.models import Paper
 from src.notify_email import build_html, send_email_digest
 from src.rank_llm import rank_papers
 from src.render import render_digest
-from src.render_site import SITE_DIR, paper_key, seen_keys, update_site
+from src.render_site import SITE_DIR, load_history, paper_key, seen_keys, update_site
 
 LOGGER = logging.getLogger(__name__)
 
@@ -36,6 +36,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--dry-run", action="store_true", help="No LLM, no email: placeholder ranking, output to data/preview/.")
     parser.add_argument("--preview", action="store_true", help="Real LLM ranking, but no email; output to data/preview/.")
     parser.add_argument("--send-email", action="store_true", help="With --preview/--dry-run: also send the email, to test delivery.")
+    parser.add_argument("--force", action="store_true", help="Publish even if today's issue already exists.")
     parser.add_argument("--verbose", action="store_true", help="Print detailed fetch logs.")
     return parser.parse_args()
 
@@ -131,6 +132,13 @@ def main() -> None:
     config["keywords"] = load_keywords(config)
     local_only = args.dry_run or args.preview
     start_date, end_date, output_date = resolve_date_range(args, config)
+
+    # The workflow runs at several times on each digest day as a retry; once one
+    # of them has published, the later ones stop here.
+    if not local_only and not args.force:
+        if any(item.get("issue") == output_date.isoformat() for item in load_history(SITE_DIR)):
+            print(f"[skip] {output_date} 这一期已经发布，本次不再重复（需要时加 --force）。")
+            return
 
     raw_papers = run_fetchers(config, start_date, end_date)
     deduped = deduplicate_papers(raw_papers)

@@ -13,6 +13,9 @@ date_range:
 # Keys live in .env (local) / GitHub Secrets (Actions), never in this file.
 llm:
   temperature: 0.2
+  # If every provider fails for a temporary reason (network, 429, 5xx), wait and
+  # retry the whole list: here after 2 minutes, then after another 10.
+  retry_wait_minutes: [2, 10]
   providers:
     - provider: deepseek            # primary (paid, very cheap)
       model: deepseek-flash

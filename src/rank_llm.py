@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import time
 from typing import Any
 
 from .models import Paper
@@ -131,6 +132,7 @@ def _rank_with_openai(
     client = OpenAI(
         api_key=os.environ.get(llm_config.get("api_key_env", "OPENAI_API_KEY")),
         base_url=llm_config.get("base_url") or BASE_URLS.get(provider),
+        timeout=120,  # seconds per request; the SDK itself also retries twice quickly
     )
     extra: dict[str, Any] = {}
     if provider in ("openai", "deepseek"):
@@ -168,15 +170,18 @@ def _providers(config: dict[str, Any]) -> list[dict[str, Any]]:
     return list(llm_config.get("providers") or [llm_config])
 
 
-def rank_papers(papers: list[Paper], config: dict[str, Any], dry_run: bool = False) -> list[Paper]:
-    selected_count = int(config.get("selected_count", 2))
-    if not papers:
-        return []
-    if dry_run:
-        print("[llm] --dry-run: LLM 未调用，使用关键词占位评分（没有中文解读）。")
-        return rank_with_placeholder(papers, selected_count)
+# Errors that usually clear up on their own (network drops, 429, 5xx / overloaded).
+_TRANSIENT = {"APIConnectionError", "APITimeoutError", "RateLimitError", "InternalServerError"}
 
+
+def _is_transient(exc: Exception) -> bool:
+    return any(cls.__name__ in _TRANSIENT for cls in type(exc).__mro__)
+
+
+def _try_providers(papers: list[Paper], config: dict[str, Any], selected_count: int) -> tuple[list[Paper], list[str], bool]:
+    """One pass over the providers. Returns (selected, problems, any_transient_failure)."""
     problems: list[str] = []
+    transient = False
     for llm_config in _providers(config):
         provider = llm_config.get("provider", "openai")
         model = llm_config.get("model")
@@ -192,13 +197,38 @@ def rank_papers(papers: list[Paper], config: dict[str, Any], dry_run: bool = Fal
                 selected = _rank_with_openai(papers, config, selected_count, llm_config)
                 if selected:
                     print(f"[llm] 成功（{label}），选出 {len(selected)} 篇。")
-                    return selected
+                    return selected, problems, transient
                 problems.append(f"{label}: 返回了空结果或无法解析的 JSON")
+                transient = True  # usually a one-off glitch
             except Exception as exc:
                 problems.append(f"{label}: 调用失败 – {exc}")
+                transient = transient or _is_transient(exc)
         print(f"[llm] 跳过 {problems[-1]}")
+    return [], problems, transient
 
-    raise RuntimeError(
-        "所有 LLM 都不可用：\n  - " + "\n  - ".join(problems)
-        + "\n本地运行请在项目根目录的 .env 里填入 key，或加 --dry-run 只测试流程。"
+
+def rank_papers(papers: list[Paper], config: dict[str, Any], dry_run: bool = False) -> list[Paper]:
+    selected_count = int(config.get("selected_count", 2))
+    if not papers:
+        return []
+    if dry_run:
+        print("[llm] --dry-run: LLM 未调用，使用关键词占位评分（没有中文解读）。")
+        return rank_with_placeholder(papers, selected_count)
+
+    # If every provider failed for a temporary reason, wait and try the whole list again.
+    waits = [float(m) for m in config.get("llm", {}).get("retry_wait_minutes", [2, 10])]
+    for round_no in range(len(waits) + 1):
+        selected, problems, transient = _try_providers(papers, config, selected_count)
+        if selected:
+            return selected
+        if not transient or round_no == len(waits):
+            break
+        print(f"[llm] 全部失败，像是临时故障；{waits[round_no]:g} 分钟后重试（第 {round_no + 2}/{len(waits) + 1} 轮）…")
+        time.sleep(waits[round_no] * 60)
+
+    hint = (
+        "GitHub Actions 会在当天稍后的时段自动再试。"
+        if os.environ.get("GITHUB_ACTIONS")
+        else "本地运行请在项目根目录的 .env 里填入 key，或加 --dry-run 只测试流程。"
     )
+    raise RuntimeError("所有 LLM 都不可用：\n  - " + "\n  - ".join(problems) + "\n" + hint)
