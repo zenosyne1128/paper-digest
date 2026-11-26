@@ -739,5 +739,119 @@
   "chinese_explanation": "该论文系统评估了单细胞预训练模型在预测单细胞表达扰动响应及刺激特异性 eQTL 遗传效应方面的表现。研究表明模型虽能预测表达量的状态转移，但无法有效捕捉变异位点层面的基因型-刺激交互作用；同时揭示了可信集（credible-set）与比率统计量在鉴定条件特异性 eQTL 时常见的假阳性陷阱，对单细胞 eQTL 及 perturb-seq 分析具有重要指导意义。",
   "key": "10.64898/2026.11.16.767041",
   "issue": "2026-11-25"
+ },
+ {
+  "title": "Bayesian Latent Functional Mediation Analysis with Application to Population-Scale Single-Cell Data",
+  "authors": [
+   "Zehua Li",
+   "Yang Ni",
+   "Weixuan Zhu"
+  ],
+  "source": "arXiv",
+  "date": "2026-11-25",
+  "link": "https://arxiv.org/abs/2611.33714v1",
+  "abstract": "Population-scale single-cell RNA sequencing studies pair cell-level gene expression with donor-level genotypes, enabling investigation of genetic regulation across cellular states. Mediation analysis in this setting must account for cells nested within donors and for unobserved cellular states. We propose a Bayesian latent functional mediation model that decomposes the association between genotype and distal gene expression into a component mediated through a candidate cis gene and a remaining direct component. The model represents expression as donor-specific trajectories over a shared latent state coordinate constrained by coarse cell annotations. Joint inference propagates uncertainty in latent states, trajectories, and mediation parameters into state-specific effect functions and their integrated summaries. Simulations show that effect recovery improves with the number of donors and that averaging expression within donors can change the mediated and direct components even when the total association is preserved. In 403,087 CD4+ T cells from 961 OneK1K donors, higher rs1131017 G-allele dosage was associated with higher RPS26 expression across the fitted state domain. The estimated RPS26-mediated component of the association with BAX expression was negative over most of the domain and was partly offset by a positive direct component, yielding a smaller negative integrated total association. In sensitivity analyses conditional on estimated donor trajectories, all three integrated effects retained their signs, with 95% credible intervals excluding zero, at the five examined coefficient-level residual correlations with $|ρ_s|\\leq 0.3$. The mediated and direct effects reversed signs at $ρ_s=-0.5$, while the integrated total association remained negative across all seven tested settings.",
+  "doi": null,
+  "arxiv_id": "2611.33714",
+  "matched_keywords": [
+   "single-cell"
+  ],
+  "score": 9.2,
+  "score_reason": "Proposes a Bayesian latent functional mediation model for population-scale single-cell RNA-seq paired with donor genotypes to decompose genetic impacts into cis-mediated and direct state-specific components.",
+  "chinese_explanation": "本文针对群体规模单细胞RNA测序（如OneK1K数据）中细胞嵌套于供体及存在未观测细胞状态的特点，提出了贝叶斯隐功能中介分析模型。该方法将基因型与远端基因表达之间的遗传关联分解为由顺式（cis）候选基因中介的部分和直接效应部分，在潜在状态轨迹上传播不确定性，为单细胞eQTL和遗传因果中介推断提供了极具价值的统计建模思路。",
+  "key": "2611.33714",
+  "issue": "2026-11-26"
+ },
+ {
+  "title": "Quantification of Bias-Variance Tradeoffs in Genome-Wide Polygenic Indices: When 'Good' PGIs are Bad and 'Bad' PGIs are Good",
+  "authors": [
+   "Dragostinov, Y.",
+   "Hsu, R. E.",
+   "Ennis, G. W.",
+   "Londono-Correa, D.",
+   "Schwaba, T.",
+   "Nivard, M. G.",
+   "Tucker-Drob, E. M."
+  ],
+  "source": "medrxiv",
+  "date": "2026-11-23",
+  "link": "https://doi.org/10.64898/2026.11.18.26368405",
+  "abstract": "Polygenic indices (PGIs) are downwardly biased in their predictive accuracies in independent samples due to the presence of estimation error in Genome-Wide Association Studies (GWAS) from which they are constructed. By performing GWAS of the same phenotype in independent samples, we obtain to error-corrected estimates of PGI prediction accuracy, which we use to estimate the extent to which different PGI construction methods (unadjusted, Clumping, LDpred2-inf, LDpred2-auto, SBayesR, PRS-CS-auto) index total single nucleotide polymorphism (SNP) heritability. To ensure practicality of this approach when individual-level data from the original GWAS are not available, we provide a means of synthetically splitting existing GWAS summary statistics into independent halves. In both simulated and empirical data, we find that advanced PGI construction methods that produce enhanced uncorrected prediction accuracies (often by shrinking individual SNP effects towards zero or exactly to zero) also produce deflated error-corrected prediction accuracies. LDpred2-inf, which most closely resembles a multiple regression estimator to account for linkage disequilibrium without further aggressive shrinkage, consistently produces PGIs with relatively lower uncorrected prediction accuracies but higher error-corrected prediction accuracies that nearly fully recover SNP heritability. We show that PGI construction methods that implement aggressive shrinkage may also provide biased patterns of associations with collateral phenotypes, irrespective of error correction. By providing a means of straightforwardly obtaining error-corrected estimates of prediction accuracy using PGIs derived from standard GWAS summary statistics, we have highlighted an uncommonly recognized bias-variance tradeoff associated with the choice of PGI construction methods.",
+  "doi": "10.64898/2026.11.18.26368405",
+  "arxiv_id": null,
+  "matched_keywords": [
+   "GWAS",
+   "genome-wide association"
+  ],
+  "score": 8.7,
+  "score_reason": "Methodologically addresses prediction bias and SNP heritability recovery in GWAS summary statistics by introducing synthetic summary-stat splitting to benchmark advanced polygenic index (PGI) algorithms like LDpred2 and SBayesR.",
+  "chinese_explanation": "该研究针对GWAS导出多基因指数（PGI/PRS）时的估计误差与预测偏差问题，提出了一种无需个体级数据即可合成分割GWAS汇总统计量以修正预测准确率的方法。论文系统分析了LDpred2、SBayesR和PRS-CS等方法在恢复SNP遗传率与偏误控制方面的偏差-方差权衡，对GWAS汇总数据建模与遗传因果推断具有很强的方法学启示。",
+  "key": "10.64898/2026.11.18.26368405",
+  "issue": "2026-11-26"
+ },
+ {
+  "title": "B-SLIM: BART Sparse Linear Interactions Model for Heterogeneous Treatment Effects",
+  "authors": [
+   "Yusufhan Balci",
+   "Mark A. van de Wiel",
+   "Jeroen Hoogland"
+  ],
+  "source": "arXiv",
+  "date": "2026-11-24",
+  "link": "https://arxiv.org/abs/2611.33246v1",
+  "abstract": "Estimating covariate-dependent treatment effects is a central challenge in personalized medicine. Existing approaches often emphasize either fully parametric models, risking misspecification, or flexible machine learning methods, which may require large samples to detect the small treatment effect heterogeneity common in medical settings. We propose B-SLIM (BART Sparse Linear Interaction Model), a semi-parametric model for causal inference that combines a flexible Bayesian Additive Regression Trees (BART) prognostic component with a sparse linear treatment effect component. This hybrid structure combines flexible prognosis modelling with interpretable treatment effects. The treatment effect component includes main effects and pairwise interactions, regularized through a global-local shrinkage prior. The model allows covariates to contribute to both components and provides direct inference on treatment effect modifiers, conditional mean potential outcomes, and conditional average treatment effects (CATEs). In simulations, B-SLIM outperforms a fully non-parametric alternative when main effects and pairwise interactions adequately represent the treatment effect function, whereas the non-parametric model performs better under strong non-linearity. On the nonlinear Infant Health and Development Program (IHDP) benchmark, the two Bayesian methods are competitive in predictive accuracy and ranking, and both achieve lower mean CATE error than the DR-learner, S-learner, and R-learner implementations considered. In the CANVAS trials, both methods yield similar rankings, while B-SLIM identifies several important drivers of treatment effect heterogeneity. B-SLIM enables interpretable inference on treatment effect parameters and patient-specific prediction of conditional mean potential outcomes, while remaining competitive at sample sizes relevant to medical studies.",
+  "doi": null,
+  "arxiv_id": "2611.33246",
+  "matched_keywords": [
+   "causal inference"
+  ],
+  "score": 7.8,
+  "score_reason": "Introduces B-SLIM, a semi-parametric causal inference model combining Bayesian Additive Regression Trees (BART) with a sparse linear interaction structure under global-local shrinkage priors for heterogeneous treatment effect inference.",
+  "chinese_explanation": "论文提出了B-SLIM模型，将贝叶斯可加回归树（BART）的非参数预后建模与基于全局-局部收缩先验的稀疏线性处理效应建模相结合。该方法在保留灵活拟合能力的同时提供了可解释的因果效应修饰因子推断，在小样本或高维协变量设置下对异质性处理效应（CATE）估计具有良好的鲁棒性。",
+  "key": "2611.33246",
+  "issue": "2026-11-26"
+ },
+ {
+  "title": "Addressing Missing Exposures in Causal Inference: A Practical Guide",
+  "authors": [
+   "Mo Wang",
+   "Elizabeth A. Stuart",
+   "Keith Barnatchez"
+  ],
+  "source": "arXiv",
+  "date": "2026-11-24",
+  "link": "https://arxiv.org/abs/2611.33336v1",
+  "abstract": "Missing exposure data are a common challenge in epidemiologic studies that can complicate the identification and estimation of causal effects. Particularly for researchers constructing doubly-robust estimators, it can be unclear how to adapt standard methods such as augmented inverse probability weighting (AIPW) to account for missing exposures. This paper clarifies challenges posed by missing exposures, and discusses approaches available for doubly-robust estimation in these settings. We outline numerous mechanisms that can give rise to missing exposures in practice, and demonstrate why double-robustness alone does not protect complete-case AIPW from missing exposure bias. We highlight three broad approaches for addressing this bias: multiply-robust estimation, single imputation and multiple imputation. Using complete-data AIPW---the estimator one would construct in the absence of missing data---as a benchmark, we demonstrate how these approaches impute different components of the ideal complete-data estimator. We discuss practical implementation challenges, including whether outcome information should be used to impute exposures or predict exposure missingness. Through simulations, we illustrate the critical roles of the missingness mechanism, treatment effect heterogeneity and model specification on the performance of these approaches. We conclude with recommendations to help researchers choose an analysis strategy and inform modeling choices involved in their implementation.",
+  "doi": null,
+  "arxiv_id": "2611.33336",
+  "matched_keywords": [
+   "causal inference"
+  ],
+  "score": 7.5,
+  "score_reason": "Provides theoretical clarification and practical solutions for doubly-robust estimation (AIPW) in causal inference when treatment/exposure data are subject to missingness.",
+  "chinese_explanation": "该文深入探讨了因果推断中存在缺失暴露数据时对双重稳健估计器（如AIPW）造成的偏差机制，并系统论述了多重稳健估计（multiply-robust estimation）与插补方法的有效性。文章揭示了处理效应异质性和模型误设对因果估计性能的影响，对设计稳健的因果推断算法具有指导意义。",
+  "key": "2611.33336",
+  "issue": "2026-11-26"
+ },
+ {
+  "title": "Adaptive confidence bands for a continuous treatment effect curve under shape constraints",
+  "authors": [
+   "Charles R. Doss",
+   "R. Oliver VandenBerg"
+  ],
+  "source": "arXiv",
+  "date": "2026-11-24",
+  "link": "https://arxiv.org/abs/2611.33440v1",
+  "abstract": "In causal inference with observational data new inferential targets arise when treatment is continuous rather than discrete. Here we form (simultaneous) confidence bands over the continuous treatment effect curve. We form confidence bands based on assuming the curve satisfies shape constraints of either monotonicity or concavity, under the assumption of no unmeasured confounding. As is commonly the case, two nuisance functions arise, and our bands are asymptotically valid if the product of the error rates of the two nuisance functions is small enough. We also develop non-causal shape constrained bands in regression with fixed or random non-uniform grid which are of independent interest. Furthermore, our bands are adaptive to a range of function flatness and smoothness levels in that when the true flatness/smoothness level is unknown the bands still achieve the same (optimal) rate of convergence (in sup-norm) as when the true smoothness level is known. We demonstrate these bands through simulations and an application to the effect of nurse staffing on hospital performance.",
+  "doi": null,
+  "arxiv_id": "2611.33440",
+  "matched_keywords": [
+   "causal inference"
+  ],
+  "score": 7.2,
+  "score_reason": "Develops double-robust adaptive continuous treatment effect confidence bands under shape constraints (monotonicity/concavity) achieving optimal convergence rates.",
+  "chinese_explanation": "论文研究了连续处理变量下的因果效应曲线推断，在效应曲线满足单调性或凹性等形状约束下建立了同步置信带。该方法具备双重稳健性（对两个扰动函数的误差速率乘积要求较低），且在未知平滑度下仍能达到最优收敛速率，为连续型因果效应的统计推断提供了有力工具。",
+  "key": "2611.33440",
+  "issue": "2026-11-26"
  }
 ]
