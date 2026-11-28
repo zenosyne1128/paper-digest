@@ -853,5 +853,124 @@
   "chinese_explanation": "论文研究了连续处理变量下的因果效应曲线推断，在效应曲线满足单调性或凹性等形状约束下建立了同步置信带。该方法具备双重稳健性（对两个扰动函数的误差速率乘积要求较低），且在未知平滑度下仍能达到最优收敛速率，为连续型因果效应的统计推断提供了有力工具。",
   "key": "2611.33440",
   "issue": "2026-11-26"
+ },
+ {
+  "title": "Single-Cell Gene Expression Heritability Informed by Genotype x Cell-Context Interactions",
+  "authors": [
+   "Wang, L.",
+   "Gusev, A.",
+   "Fadil, C.",
+   "Wang, L.",
+   "Van Dyke, K."
+  ],
+  "source": "medrxiv",
+  "date": "2026-11-25",
+  "link": "https://doi.org/10.64898/2026.11.23.26368758",
+  "abstract": "Most signals from genome-wide association studies (GWAS) of complex traits implicate noncoding variants with putative gene regulatory effects. However, currently identified regulatory variants, particularly expression quantitative trait loci (eQTLs), explain only a small fraction of GWAS associations. Moreover, GWAS loci are enriched near evolutionarily constrained genes, whereas constrained genes are depleted of detectable eQTLs, suggesting that weak or context-specific regulatory mechanisms may contribute substantially to disease risk but remain poorly captured by existing approaches. Here, we introduce scHINT (single-cell gene expression Heritability estimation with genotype x context INTeraction), a computationally efficient framework for quantifying cell-level expression heritability and context-dependent genetic regulation from large-scale single-cell data. Applying scHINT to human brain single-nucleus RNA-seq data, we found that genotype-by-cell-state heritability was widespread across brain cell types and, on average, exceeded main genetic heritability, indicating that context-dependent genetic effects explain a substantial fraction of heritable expression variation. GxCell-State heritability was enriched among low-frequency variants and constrained genes, and showed stronger enrichment for functional gene sets and disease heritability than main genetic effects. Using a novel GxCell-State TWAS framework, we identified 68% more disease-risk genes and recapitulated rare-variant burden-test gene TREM2, which was missed by state-agnostic TWAS. In blood, we observed the same direction of enrichment for GxCell-State heritability at constrained genes, but weaker than in brain, suggesting that cell-state-dependent regulation at constrained genes may be more prominent in brain. Finally, extending scHINT to perturbation screens revealed substantial perturbation-by-cell-state effects, highlighting broad context dependence in transcriptional responses.",
+  "doi": "10.64898/2026.11.23.26368758",
+  "arxiv_id": null,
+  "matched_keywords": [
+   "GWAS",
+   "genome-wide association",
+   "single-cell",
+   "eQTL",
+   "TWAS"
+  ],
+  "score": 9.5,
+  "score_reason": "Introduces scHINT and a GxCell-State TWAS framework to estimate context-dependent single-cell expression heritability and eQTLs, with extensions to single-cell perturbation screens.",
+  "chinese_explanation": "该研究提出了 scHINT 框架，用于从单细胞 RNA-seq 数据中量化基因型与细胞状态互作（GxCell-State）导致的遗传率，并建立了细胞状态敏感的 TWAS 方法。作者发现基因型与细胞状态的交互作用遗传率普遍高于主遗传效应，在约束基因与低频变异中显著富集，且比传统 TWAS 多识别出 68% 的疾病风险基因（如 TREM2）。此外，方法还成功扩展到了单细胞基因扰动筛选（perturbation screens）分析中，高度契合 GWAS、eQTL、TWAS 和单细胞/扰动推断的研究方向。",
+  "key": "10.64898/2026.11.23.26368758",
+  "issue": "2026-11-28"
+ },
+ {
+  "title": "FastHer: a fast and accurate estimator of local heritability from summary statistics",
+  "authors": [
+   "Svishcheva, G. R.",
+   "Tsepilov, Y. A.",
+   "Axenovich, T. I."
+  ],
+  "source": "biorxiv",
+  "date": "2026-11-25",
+  "link": "https://doi.org/10.64898/2025.12.24.696369",
+  "abstract": "We present FastHer, a method for estimating local heritability using GWAS summary statistics and linkage disequilibrium (LD) matrices. FastHer performs exact restricted maximum-likelihood estimation matching the accuracy of individual-level methods. Analytical transformations ensure high computational efficiency. FastHer incorporates SNP weights that define the contribution of each SNP to heritability. The introduction of a model-data concordance parameter enables the adaptation of reference LD matrices when in-sample LD matrices are unavailable.",
+  "doi": "10.64898/2025.12.24.696369",
+  "arxiv_id": null,
+  "matched_keywords": [
+   "GWAS"
+  ],
+  "score": 8.5,
+  "score_reason": "Develops FastHer, an exact REML estimator for local heritability using GWAS summary statistics and LD matrices with a model-data concordance parameter.",
+  "chinese_explanation": "本文提出了 FastHer 方法，旨在仅依靠 GWAS 汇总统计量（summary statistics）和连锁不平衡（LD）矩阵实现快速且精确的局部遗传率估计。该方法在数学上实现了与个体级数据精确匹配的约束极大似然估计（REML），并引入模型-数据一致性参数以调整非样本内参考 LD 矩阵的偏差。该工具对 GWAS 统计遗传学推断和分析具有很高的实用方法学价值。",
+  "key": "10.64898/2025.12.24.696369",
+  "issue": "2026-11-28"
+ },
+ {
+  "title": "Cell-Type-Specific Expression Is Hard to Predict from Bulk, but It Is Still Useful",
+  "authors": [
+   "Gadi Naveh",
+   "Amit Miller",
+   "Gal Keinan"
+  ],
+  "source": "arXiv",
+  "date": "2026-11-25",
+  "link": "https://arxiv.org/abs/2611.34166v1",
+  "abstract": "Single-cell-informed deconvolution provides cell-type-resolved features for clinical bulk RNA cohorts. Most existing methods predict the proportions $π_k$ of the $K$ constituent cell types (CTs). Fewer predict cell-type-specific expression (CTSE) $μ_{kg}$ of gene $g$ in CT $k$, which can capture cell states that proportions miss, but recent benchmarks find it much harder. We explain this gap with closed-form accuracy bounds. For CTSE, we derive an $R^2$ ceiling for per-gene linear estimators. For proportions, the best linear estimator, which pools evidence across genes, has a closed-form $R^2$, and a computable lower bound on it predicts which CTs are learnable. We study targeted deconvolution of 106 biologically curated (CT, gene) pairs, found post hoc to have higher learnability scores. On overall survival in non-small cell lung cancer, estimation difficulty does not predict prognostic value across these targets. Yet a sparse survival model on deconvolved features, mostly CTSE, predicts survival as well as a sparse model on the bulk genes themselves, while attributing its signal to specific cell types. Some deconvolved CTSE features reveal prognostic signal not seen in the corresponding bulk gene.",
+  "doi": null,
+  "arxiv_id": "2611.34166",
+  "matched_keywords": [
+   "single-cell"
+  ],
+  "score": 8.0,
+  "score_reason": "Derives closed-form theoretical accuracy bounds ($R^2$ ceiling) for estimating cell-type-specific expression (CTSE) and proportions from bulk RNA using single-cell references.",
+  "chinese_explanation": "该论文研究了利用单细胞参考数据从 bulk RNA 序列中解离细胞类型特异性表达（CTSE）的理论瓶颈，推导出了线性估计量精度的闭形式 $R^2$ 理论上限以及判断细胞类型可学习性的下限。研究表明，解离出的 CTSE 特征能捕获 bulk 表达所缺失的特异性预后信号。该工作为单细胞与 bulk 数据整合、去卷积算法评估提供了严谨的统计理论支持。",
+  "key": "2611.34166",
+  "issue": "2026-11-28"
+ },
+ {
+  "title": "Design-based causal inference for ROC curves",
+  "authors": [
+   "Bufan Li",
+   "Haoyang Yu"
+  ],
+  "source": "arXiv",
+  "date": "2026-11-25",
+  "link": "https://arxiv.org/abs/2611.34057v1",
+  "abstract": "In randomized experiments, causal inference traditionally focuses on the average treatment effect, yet comparing the treatment and control potential outcome distributions is often of interest. Under complete randomization, we adopt a design-based framework without imposing an outcome model to study the receiver operating characteristic (ROC) curve, which measures the proportion of treated outcomes exceeding each upper quantile of the control distribution. We propose an estimator that depends only on pooled outcome ranks, establish its asymptotic normality, and construct conservative variance estimators and confidence intervals. We also develop covariate adjustment directly for the ROC estimator, preserving the target estimand while achieving an asymptotic variance no larger than that of the unadjusted estimator. We further construct simultaneous confidence bands over an interior range of quantile levels and extend pointwise inference to the extreme upper tail of the control distribution, with both extensions accommodating covariate adjustment. Simulation studies and an application to a large-scale online learning experiment illustrate the proposed methods.",
+  "doi": null,
+  "arxiv_id": "2611.34057",
+  "matched_keywords": [
+   "causal inference"
+  ],
+  "score": 7.8,
+  "score_reason": "Proposes a non-parametric design-based causal inference estimator for ROC curves under randomized experiments, incorporating non-parametric covariate adjustment.",
+  "chinese_explanation": "本文针对随机试验中处理与对照潜在结果的全分布比较，提出了基于实验设计的 ROC 曲线无模型因果推断框架。作者构建了仅依赖于合并结果秩（pooled outcome ranks）的估计量，推导了渐近正态性与方差估计，并进一步开发了不改变目标估计量且能显著降低估计方差的协变量调整策略。这为超越均值处理效应（ATE）的因果推断方法学研究提供了可复用的统计工具。",
+  "key": "2611.34057",
+  "issue": "2026-11-28"
+ },
+ {
+  "title": "Resolving cell states in spatial transcriptomics with SCATTER",
+  "authors": [
+   "Lei Huang",
+   "Yun Gong",
+   "Weiqiang Lin",
+   "Lindong Jiang",
+   "Hui Shen",
+   "Chaoyang Zhang",
+   "Hong-Wen Deng"
+  ],
+  "source": "arXiv",
+  "date": "2026-11-25",
+  "link": "https://arxiv.org/abs/2611.34798v1",
+  "abstract": "A capture spot can contain transcripts from multiple cell types. Differences between spots may reflect changes in cell-type proportions, expression within a cell type, or both, making local cell-type expression difficult to infer from mixed counts. We developed SCATTER to estimate cell-type proportions and relative expression profiles for each cell type at each spot from spatial transcriptomic counts, coordinates, and annotated single-cell reference data. SCATTER weights reference cell profiles using local spatial context, then jointly fits the resulting profiles and cell-type proportions to reconstruct spot counts. Cell2location estimates regularize the proportions. After fitting, SCATTER uses learned gene-specific calibration factors and fitted proportions to allocate observed counts among cell types. In five pseudo-spot benchmarks constructed from imaging data, SCATTER achieved higher cross-spot correlations with measured expression for 82.8-99.8% of evaluated gene-cell type pairs in pairwise comparisons with DestVI, PANDA, and STged. In breast cancer Xenium data, it recovered gene expression associated with the tumor neighborhood and regulon scores. In breast cancer Visium data, inferred stromal and macrophage expression showed distinct associations with neighborhood malignant cell proportions. In multiple sclerosis brain tissue, SCATTER recovered lesion-associated glial expression programs. In colorectal cancer Visium HD data, it mapped cell-type-specific programs at the invasive front and ranked candidate ligand-receptor pairs. SCATTER enables analysis of spatial expression variation within cell types from mixed tissue measurements.",
+  "doi": null,
+  "arxiv_id": "2611.34798",
+  "matched_keywords": [
+   "single-cell"
+  ],
+  "score": 7.5,
+  "score_reason": "Presents SCATTER, a deconvolution method combining spatial transcriptomics with single-cell RNA-seq references to recover cell-type-specific gene expression in mixed counts.",
+  "chinese_explanation": "论文开发了空间转录组解离算法 SCATTER，通过结合单细胞 RNA-seq 参考图谱与局部空间上下文，联合推断空间 spot 内的细胞类型比例及细胞类型特异性基因表达谱。算法引入了基因特异性校准因子和校正策略，在 Xenium 和 Visium 等多组基准测试中表现优于 DestVI 等现有工具。该方法对于利用单细胞参考进行微环境表达定量和统计建模具有较高的实用价值。",
+  "key": "2611.34798",
+  "issue": "2026-11-28"
  }
 ]
